@@ -7,7 +7,7 @@ import './children/orders/orders.dart';
 import './children/personal/personal.dart';
 
 class BottomBarItem {
-  BottomBarItem({ this.title, this.name, this.icon, this.widget });
+  BottomBarItem({this.title, this.name, this.icon, this.widget});
   final String title;
   final String name;
   final Icon icon;
@@ -15,12 +15,27 @@ class BottomBarItem {
 }
 
 final List<BottomBarItem> _bottomBarItems = <BottomBarItem>[
-  BottomBarItem(title: '首页', name: 'home', icon: Icon(XDIcons.home), widget: HomeScreen()),
-  BottomBarItem(title: '发现', name: 'discover', icon: Icon(XDIcons.discover), widget: Discover()),
-  BottomBarItem(title: '订单', name: 'orders', icon: Icon(XDIcons.orders), widget: Orders()),
-  BottomBarItem(title: '我的', name: 'personal', icon: Icon(XDIcons.personal), widget: Personal()),
+  BottomBarItem(
+      title: '首页',
+      name: 'home',
+      icon: Icon(XDIcons.home),
+      widget: HomeScreen()),
+  BottomBarItem(
+      title: '发现',
+      name: 'discover',
+      icon: Icon(XDIcons.discover),
+      widget: Discover()),
+  BottomBarItem(
+      title: '订单',
+      name: 'orders',
+      icon: Icon(XDIcons.orders),
+      widget: Orders()),
+  BottomBarItem(
+      title: '我的',
+      name: 'personal',
+      icon: Icon(XDIcons.personal),
+      widget: Personal()),
 ];
-
 
 class Home extends StatefulWidget {
   @override
@@ -28,7 +43,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   int _currentIndex = 0;
 
   final _pageController = PageController();
@@ -40,7 +54,7 @@ class _HomeState extends State<Home> {
   }
 
   void _onTapBottomBar(int index) {
-    _pageController.jumpToPage(index); 
+    _pageController.jumpToPage(index);
   }
 
   void _onSwitchTab(Event e) {
@@ -72,12 +86,13 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _bottomBarItems.map((BottomBarItem bottomBarItem) {
-          return BottomNavigationBarItem(icon: bottomBarItem.icon, title: Text(bottomBarItem.title));
+          return BottomNavigationBarItem(
+              icon: bottomBarItem.icon, title: Text(bottomBarItem.title));
         }).toList(),
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed, // 大于3个底部导航需要设置fixed定位
         onTap: _onTapBottomBar,
-        selectedFontSize: 12.0, // 字体默认12.0，选中时放大为14.0
+        //selectedFontSize: 12.0, // 字体默认12.0，选中时放大为14.0
       ),
     );
   }
